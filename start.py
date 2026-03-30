@@ -8,9 +8,10 @@ from droidbot import DroidBot
 from droidbot.droidmaster import DroidMaster
 import os
 
-os.environ['GPT_API_URL'] = ""
-os.environ['GPT_API_KEY'] = ""
-os.environ['manual'] = 'False'
+os.environ.setdefault('OPENAI_BASE_URL', "")
+os.environ.setdefault('OPENAI_API_KEY', "")
+os.environ.setdefault('OPENAI_MODEL', "gpt-3.5-turbo-1106")
+os.environ.setdefault('MANUAL_MODE', 'False')
 
 def parse_args():
     """

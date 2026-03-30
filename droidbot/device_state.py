@@ -30,7 +30,7 @@ class DeviceState(object):
         self.structure_str_ = self.__get_content_free_state_str()[:6]
         self.search_content = self.__get_search_content()
         
-        self.manual_mode = (os.environ['manual'] == 'True')
+        self.manual_mode = (os.environ.get('MANUAL_MODE', 'False') == 'True')
         self.text_representation = self.get_text_representation()
         self.text_representation_frame = self.get_text_representation_frame()
         self.possible_events = None

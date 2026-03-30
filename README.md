@@ -27,7 +27,7 @@ pip install -e .
     - `.apk` file path of the app you want to analyze.
     - A device or an emulator connected to your host machine via `adb`.
 
-2. Set `GPT_API_URL` and `GPT_API_KEY` environment variables to your ChatGPT API url and key in `start.py`.
+2. Set `OPENAI_BASE_URL` and `OPENAI_API_KEY` environment variables to your API url and key (in `start.py` or your shell environment). Optionally set `OPENAI_MODEL` to override the default model.
 2. Start DroidBot with LLM-guided policy:
 
     ```

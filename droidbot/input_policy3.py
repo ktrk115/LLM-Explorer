@@ -50,7 +50,7 @@ EXPLORE_WITH_LLM = True
 '''below is for manual mode'''
 ADDTEXT = True
 
-Manual_mode = os.environ['manual'] == 'True'
+Manual_mode = os.environ.get('MANUAL_MODE', 'False') == 'True'
 GOBACK_element = {
                 'allowed_actions': ['press'],
                 'status':[],
@@ -126,8 +126,13 @@ class GPT:
 
 
     @staticmethod
-    def query(prompt, usage_path, model='gpt-3.5-turbo-1106', url=os.environ['GPT_API_URL'], api_key=os.environ['GPT_API_KEY'], temperature=0.7, verbose=True):
-    # def query(prompt, usage_path, model='gpt-4-1106-preview', url=os.environ['GPT_API_URL'], api_key=os.environ['GPT_API_KEY'], temperature=0.7, verbose=True):
+    def query(prompt, usage_path, model=None, url=None, api_key=None, temperature=0.7, verbose=True):
+        if model is None:
+            model = os.environ.get('OPENAI_MODEL', 'gpt-3.5-turbo-1106')
+        if url is None:
+            url = os.environ.get('OPENAI_BASE_URL', '')
+        if api_key is None:
+            api_key = os.environ.get('OPENAI_API_KEY', '')
         client = OpenAI(
             base_url=url,
             api_key=api_key
